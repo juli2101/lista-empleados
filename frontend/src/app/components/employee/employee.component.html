@@ -12,30 +12,30 @@
 
           <div class="form-group">
             <input type="text" name="name" #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.name"
-              placeholder="Enter your FullName" class="form-control">
+              placeholder="Nombre completo" class="form-control">
           </div>
 
           <div class="form-group">
             <div class="input-field col-s12">
               <input type="text" name="position" #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.position"
-                placeholder="Enter your Position" class="form-control">
+                placeholder="Cargo" class="form-control">
             </div>
           </div>
 
           <div class="form-group">
             <input type="text" name="office" #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.office"
-              placeholder="Enter your Office" class="form-control">
+              placeholder="Oficina" class="form-control">
           </div>
 
           <div class="form-group">
             <div class="input-field col-s12">
               <input type="text" name="salary" #name="ngModel" [(ngModel)]="employeeService.selectedEmployee.salary"
-                value="0" placeholder="Enter your Salary" class="form-control">
+                value="0" placeholder="Salario" class="form-control">
             </div>
           </div>
 
-          <button class="btn btn-primary mr-2" (click)="resetForm(employeeForm)">Clean</button>
-          <button class="btn btn-secondary">Save</button>
+          <button class="btn btn-primary mr-2" (click)="resetForm(employeeForm)">Limpiar</button>
+          <button class="btn btn-secondary">Guardar</button>
       </form>
     </div>
   </div>
@@ -43,12 +43,15 @@
 
 <!-- TABLE -->
 <div class="col-md-8">
+  <div class="col-md-4">
+    <input type="text" class="form-control" placeholder="Ingrese el nombre" [(ngModel)]="filterNombre" (change)="filtrar(filterNombre, 'name')">
+  </div>
   <table class="table table-striped">
     <thead>
-      <th>Name</th>
-      <th>Position</th>
-      <th>Office</th>
-      <th>Operations</th>
+      <th>Nombre</th>
+      <th>Cargo</th>
+      <th>Oficina</th>
+      <th>Acciones</th>
     </thead>
     <tbody>
       <tr *ngFor="let employee of employeeService.employees">

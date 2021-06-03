@@ -11,10 +11,18 @@ import { Employee } from "../../models/employee";
   providers: [EmployeeService],
 })
 export class EmployeeComponent implements OnInit {
+
+  filterNombre: string;
   constructor(private employeeService: EmployeeService) {}
 
   ngOnInit() {
     this.getEmployees();
+  }
+
+  filtrar(param: string, field: string) {
+    this.employeeService.employees = this.employeeService.employees.filter((x) => {
+      return x[field].toLowerCase() === param.toLowerCase();
+    });
   }
 
   addEmployee(form?: NgForm) {
